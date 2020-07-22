@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+       <Properties>
+              <property name="core2LogPath">SpclSrvcsLog</property>
+       </Properties>
+
+       <Appenders>		 
+ 		  <RollingFile name="core2LogAppender" fileName="${core2LogPath}/SpclSrvcsCore2Log.log" filePattern="${core2LogPath}/archive/SpclSrvcsCore2Log %d{yyyy-MM-dd} - %i.log.gz" immediateFlush="false" append="false">
+				 <PatternLayout pattern ="%m%n" />
+				 <DefaultRolloverStrategy max="500"/>
+				 <Policies>
+					 <TimeBasedTriggeringPolicy/>
+					 <SizeBasedTriggeringPolicy size="10 MB"/>
+				 </Policies>
+		  </RollingFile>		
+       </Appenders>
+
+       <Loggers>
+          <AsyncLogger name="core2Logger" level="debug" includeLocation="true"><AppenderRef ref="core2LogAppender"/></AsyncLogger>
+       </Loggers>
+</Configuration>
+
